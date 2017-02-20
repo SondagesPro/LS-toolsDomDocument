@@ -17,7 +17,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-class toolsDomDocument extends PluginBase
+class toolsDomDocument extends \ls\pluginmanager\PluginBase
 {
     protected $storage = 'DbStorage';
 
