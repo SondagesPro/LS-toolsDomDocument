@@ -6,7 +6,7 @@
 *
 * @author Artem Russakovskii
 * @author Denis Chenu
-* @version 0.5.0
+* @version 0.5.1
 * @link http://beerpla.net
 * @link http://www.php.net/manual/en/class.domdocument.php
 * @license MIT
@@ -71,7 +71,7 @@ class SmartDOMDocument extends \DOMDocument {
   * @return string
   */
   public function saveHTMLExact() {
-    $content = preg_replace(array("/^\<\!DOCTYPE.*?<html><body>/si",
+    $content = preg_replace(array("/^\<\!DOCTYPE.*?<html>.*?<body>/si",
                                   "!</body></html>$!si"),
                             "",
                             $this->saveHTML());
