@@ -1,0 +1,15 @@
+{
+    "name": "SondagesPro/toolsDomDocument",
+    "description": "Tool for another plugin : Add some libraries for easiest manipulation on DOM.",
+    "type": "limesurvey-plugin",
+    "homepage": "https://github.com/SondagesPro/LS-toolsDomDocument",
+    "license": "AGPL-3.0+",
+    "authors": [
+        {
+            "name": "Denis Chenu",
+            "email": "contact@sondages.pro"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {}
+}
