@@ -5,7 +5,7 @@
  * @author Denis Chenu <denis@sondages.pro>
  * @copyright 2015-2018 Denis Chenu <http://www.sondages.pro>
  * @license GPL v3
- * @version 0.2.0
+ * @version 0.2.1
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,15 +27,6 @@ class toolsDomDocument extends PluginBase
     */
     public function init()
     {
-        $this->subscribe('afterPluginLoad'); /* Seems the quickest way for an helper for other plugin */
-    }
-
-    /**
-     * Set the alias to get the file
-     */
-    public function afterPluginLoad()
-    {
         Yii::setPathOfAlias('toolsDomDocument', dirname(__FILE__)."/libraries/SmartDOMDocument/");
     }
-
 }
