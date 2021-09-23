@@ -18,4 +18,5 @@
         <version>4</version>
         <version>5</version>
     </compatibility>
+    <updaters disabled="disabled"></updaters>
 </config>
