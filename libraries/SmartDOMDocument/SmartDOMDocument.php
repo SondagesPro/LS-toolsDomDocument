@@ -2,11 +2,11 @@
 /**
 * This class overcomes a few common annoyances with the DOMDocument class,
 * such as saving partial HTML without automatically adding extra tags
-* and properly recognizing various encodings, specifically UTF-8.
+* and properly recognizing various encodings, needed to be UTF-8.
 *
 * @author Artem Russakovskii
 * @author Denis Chenu
-* @version 0.5.1
+* @version 0.6.1
 * @link http://beerpla.net
 * @link http://www.php.net/manual/en/class.domdocument.php
 * @license MIT
@@ -35,16 +35,15 @@ class SmartDOMDocument extends \DOMDocument {
   * @link http://www.php.net/manual/en/domdocument.loadhtml.php
   *
   * @param string $html
-  * @param string $encoding, default to UTF-8
   *
   * @return bool
   */
-  public function loadHTML($html, $encoding = "UTF-8") {
-    $html = mb_convert_encoding($html, 'HTML-ENTITIES', $encoding);
+  public function loadHTML($html, $options = 0 ) {
+    $html = htmlspecialchars_decode(htmlentities($html));
     if(!$this->debug)
-      return @parent::loadHTML($html); // suppress warnings
+      return @parent::loadHTML($html, $options); // suppress warnings
     else
-      return parent::loadHTML($html);
+      return parent::loadHTML($html, $options);
   }
 
   /**
@@ -54,11 +53,10 @@ class SmartDOMDocument extends \DOMDocument {
   *
   * @param string $html
   * @param string $doctype, default to html (HTML5)
-  * @param string $encoding, default to UTF-8
   *
   * @return bool
   */
-  public function loadPartialHTML($html, $doctype = 'html', $encoding = "UTF-8") {
+  public function loadPartialHTML($html, $doctype = 'html') {
     $html='<!DOCTYPE '.$doctype.'><html><head></head><body>'.$html.'</body></html>';
     return self::loadHTML($html);
   }
