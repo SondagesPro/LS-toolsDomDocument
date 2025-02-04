@@ -38,7 +38,7 @@ class SmartDOMDocument extends \DOMDocument {
   *
   * @return bool
   */
-  public function loadHTML($html, $options = 0 ) {
+  public function loadHTML(string $html,int $options = 0 ): bool {
     $html = htmlspecialchars_decode(htmlentities($html));
     if(!$this->debug)
       return @parent::loadHTML($html, $options); // suppress warnings
@@ -56,7 +56,7 @@ class SmartDOMDocument extends \DOMDocument {
   *
   * @return bool
   */
-  public function loadPartialHTML($html, $doctype = 'html') {
+  public function loadPartialHTML(string $html, string $doctype = 'html') {
     $html='<!DOCTYPE '.$doctype.'><html><head></head><body>'.$html.'</body></html>';
     return self::loadHTML($html);
   }

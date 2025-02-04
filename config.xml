@@ -4,11 +4,11 @@
         <name>toolsDomDocument</name>
         <type>plugin</type>
         <creationDate>2016-06-06</creationDate>
-        <lastUpdate>2024-09-12</lastUpdate>
+        <lastUpdate>2025-02-04</lastUpdate>
         <author>Denis Chenu</author>
         <authorUrl>https://extensions.sondages.pro/development-and-example/toolssmartdomdocument/</authorUrl>
         <supportUrl>https://www.sondages.pro/contact</supportUrl>
-        <version>0.3.1</version>
+        <version>0.3.2</version>
         <license>GNU General Public License v3.0</license>
         <description><![CDATA[Tool for another plugin : Add some libraries for easiest manipulation on DOM.]]></description>
     </metadata>
