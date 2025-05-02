@@ -6,7 +6,7 @@
 *
 * @author Artem Russakovskii
 * @author Denis Chenu
-* @version 0.6.1
+* @version 0.6.2
 * @link http://beerpla.net
 * @link http://www.php.net/manual/en/class.domdocument.php
 * @license MIT
@@ -39,7 +39,7 @@ class SmartDOMDocument extends \DOMDocument {
   * @return bool
   */
   public function loadHTML(string $html,int $options = 0 ): bool {
-    $html = htmlspecialchars_decode(htmlentities($html));
+    $html = htmlspecialchars_decode(htmlentities($html, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8'));
     if(!$this->debug)
       return @parent::loadHTML($html, $options); // suppress warnings
     else
