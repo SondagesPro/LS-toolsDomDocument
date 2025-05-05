@@ -3,12 +3,11 @@
 /**
 * This class overcomes a few common annoyances with the DOMDocument class,
 * such as saving partial HTML without automatically adding extra tags
-* and properly recognizing various encodings, needed to be UTF-8.
-* Tested only for LimeSurvey plugin with partial HTML
+* and properly recognizing various encodings, specifically UTF-8.
 *
 * @author Artem Russakovskii
 * @author Denis Chenu
-* @version 0.7.0
+* @version 0.5.1
 * @link http://beerpla.net
 * @link http://www.php.net/manual/en/class.domdocument.php
 * @license MIT
@@ -39,16 +38,17 @@ class SmartDOMDocument extends \DOMDocument
   * @link http://www.php.net/manual/en/domdocument.loadhtml.php
   *
   * @param string $html
+  * @param string $encoding, default to UTF-8
   *
   * @return bool
   */
-    public function loadHTML(string $html, int $options = 0): bool
+    public function loadHTML($html, $encoding = "UTF-8")
     {
-        $contentType = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"; // Force utf8
+        $contentType = '<?xml version="1.0" encoding="' . $encoding . '"?>' . "\n"; // Force utf8
         if (!$this->debug) {
-            return @parent::loadHTML($contentType . $html, $options); // suppress warnings
+            return @parent::loadHTML($contentType . $html); // suppress warnings
         } else {
-            return parent::loadHTML($contentType . $html, $options);
+            return parent::loadHTML($contentType . $html);
         }
     }
 
@@ -59,13 +59,14 @@ class SmartDOMDocument extends \DOMDocument
   *
   * @param string $html
   * @param string $doctype, default to html (HTML5)
+  * @param string $encoding, default to UTF-8
   *
   * @return bool
   */
-    public function loadPartialHTML(string $html, string $doctype = 'html')
+    public function loadPartialHTML($html, $doctype = 'html', $encoding = "UTF-8")
     {
-        $html = '<!DOCTYPE ' . $doctype . '><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></head><body>' . $html . '</body></html>';
-        return self::loadHTML($html);
+        $html = '<!DOCTYPE ' . $doctype . '><html><head><meta content="text/html; charset=' . $encoding . '" http-equiv="Content-Type"></head><body>' . $html . '</body></html>';
+        return self::loadHTML($html, $encoding);
     }
 
   /**

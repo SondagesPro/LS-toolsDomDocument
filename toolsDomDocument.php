@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Tool for another plugin : Add some libraries for easiest manipulation on DOM
  *
  * @author Denis Chenu <denis@sondages.pro>
- * @copyright 2015-2018 Denis Chenu <http://www.sondages.pro>
+ * @copyright 2015-2025 Denis Chenu <http://www.sondages.pro>
  * @license GPL v3
- * @version 0.2.1
+ * @version 0.3.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +20,18 @@
  */
 class toolsDomDocument extends PluginBase
 {
-    static protected $name = 'toolsDomDocument';
-    static protected $description = 'Tools for plugin : SmartDomDocument';
+    protected static $name = 'toolsDomDocument';
+    protected static $description = 'Tools for plugin : SmartDomDocument';
 
     /**
     * Add function to be used in beforeQuestionRender event
     */
     public function init()
     {
-        Yii::setPathOfAlias('toolsDomDocument', dirname(__FILE__)."/libraries/SmartDOMDocument/");
+        if (version_compare(PHP_VERSION, '8.0.0') < 0) {
+            Yii::setPathOfAlias('toolsDomDocument', dirname(__FILE__) . "/libraries_php7/SmartDOMDocument/");
+            return;
+        }
+        Yii::setPathOfAlias('toolsDomDocument', dirname(__FILE__) . "/libraries/SmartDOMDocument/");
     }
 }
