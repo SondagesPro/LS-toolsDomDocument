@@ -8,7 +8,7 @@
         <author>Denis Chenu</author>
         <authorUrl>https://extensions.sondages.pro/development-and-example/toolssmartdomdocument/</authorUrl>
         <supportUrl>https://www.sondages.pro/contact</supportUrl>
-        <version>0.3.3-beta1</version>
+        <version>0.3.4</version>
         <license>GNU General Public License v3.0</license>
         <description><![CDATA[Tool for another plugin : Add some libraries for easiest manipulation on DOM.]]></description>
     </metadata>
